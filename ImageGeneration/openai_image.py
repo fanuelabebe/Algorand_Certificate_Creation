@@ -8,6 +8,15 @@ load_dotenv()
 
 client = OpenAI()
 
+def create_variation_from_file():
+    response = client.images.create_variation(
+      model="dall-e-2",
+      image = open("openai_image_test_1.jpg","rb"),
+      size="1792x1024",
+      n=3
+    )
+    return response
+
 def get_img_with_prompt(prompt):
     response = client.images.generate(
       model="dall-e-3",
@@ -24,6 +33,8 @@ def show_img_response(response):
     response = requests.get(image_url)
     img = Image.open(BytesIO(response.content))
     img.show()
+
+
 prompt = "minimalist professional background, very small algorand logo at the top,white background, professional certificate template, has empty space for text in the middle, \
 no lines,make it look like a document"
 # prompt = "white gold elegant modern certificate"
