@@ -13,7 +13,7 @@ def create_variation_from_file():
       model="dall-e-2",
       image = open("openai_image_test_1.jpg","rb"),
       size="1792x1024",
-      n=3
+      n=1
     )
     return response
 
