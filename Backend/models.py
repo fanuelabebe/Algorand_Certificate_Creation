@@ -1,11 +1,12 @@
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy.ext.declarative import declarative_base
+from database import Base
+from sqlalchemy import Column, Integer, String, Boolean, Float
 
-URL_DATABASE = 'sqlite:///.finance.db'
+class Account(Base):
+    __tablename__ = 'accounts'
 
-engine = create_engine(URL_DATABASE,connect_args={"check_same_thread":False})
-
-SessionLocal = sessionmaker(autocommit=False,autoflush=False,bind=engine)
-
-Base = declarative_base()
+    id = Column(Integer,primary_key=True,index=True)
+    user_name = Column(String)
+    password = Column(String)
+    role = Column(Integer)
+    public_key = Column(String)
+    remark = Column(String)
