@@ -1,5 +1,5 @@
 from fastapi import FastAPI, HTTPException, Depends
-from typing import Annotated
+from typing import Annotated, List
 from sqlalchemy.orm import Session
 from pydantic import BaseModel
 from database import SessionLocal, engine
@@ -49,3 +49,8 @@ async def create_account(account:AccountBase,db:db_dependency):
     db.commit()
     db.refresh(db_account)
     return db_account
+
+@app.get("/accounts/",response_model=List[AccountModel])
+async def read_accounts(db:db_dependency,skip:int = 0,limit: int = 100):
+    accounts = db.query(models.Account).offset(skip).limit(limit).all()
+    return accounts
