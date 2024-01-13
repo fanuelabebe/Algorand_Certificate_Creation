@@ -11,7 +11,7 @@ I have used the following techstacks for making this dApp
 - Algorand Sandbox
 - MySQL : this should be deprecated for future work
 ___
-
+```bash
 git clone https://github.com/fanuelabebe/Algorand_Certificate_Creation.git
 
 cd Algorand_Certificate_Creation
@@ -21,8 +21,10 @@ cd Algorand_Certificate_Creation
 cd ../Frontend/api
 uvicorn app:app --reload
 
+
 # start react frontend
 # go to the react folder first 
 # from the api folder . . . .
 cd ../Frontend/algorand-react
 npm run start
+```
